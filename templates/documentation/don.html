@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Don{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #000000; }
+    .automatic {color: #FFFFFF; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Don</h1>
+  <p class="important">
+     • <b class = "automatic" >50%</b> chance of <b class = "automatic" >x2</b> bal or <b class = "automatic" >x0</b> bal.
+  <h4><a href = "/doc">Back to Documentation</a></h4>
+{% endblock %}

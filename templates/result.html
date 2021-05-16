@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h1>Results</h1>
+  result of addition : {{ msg }}
+  <h4><a href = "/list">List</a></h4>
+{% endblock %}

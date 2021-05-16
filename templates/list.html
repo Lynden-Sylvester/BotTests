@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}List{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { background-color: #ff6699; }
+    .name {background-color: #ffffff; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>List</h1>
+  <table border = 1 class = "important">
+         <thead>
+            <td>Discord Username</td>
+            <td>Discord Id</td>
+         </thead>
+         {% for row in rows %}
+            <tr class = "name">
+               <td>{{row["user"]}}</td>
+               <td>{{row["user_id"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+  <h4><a href = "/">Home</a></h4>
+{% endblock %}

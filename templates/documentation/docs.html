@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Command Documentation{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { 
+      color: #7a8c9e; 
+      background-color: #000000;
+    }
+    .col {
+      background-color: #FFFFFF;
+    }
+    
+  </style>
+{% endblock %}
+{% block content %}
+  <h1 >Command Documentation</h1>
+  
+  <table>
+    <tr class="important">
+      <th>Games</th>
+      <th>Dailies</th>
+      <th>Support</th>
+      <th>Economy</th>
+      <th>User 2 User</th>
+    </tr>
+    <tr>
+      <td>
+        <ul>• <a href = "/don">Don</a></ul>
+        <ul>• <a href = "/rps">RPS</a></ul>
+        <ul>• Turtle - IP</ul>
+      </td>
+      <td>
+        <ul>• Work - Page</ul>
+        <ul>• Login - IP</ul>
+        <ul>• Vote - IP</ul>
+      </td>
+      <td>
+        <ul>• <a href = "/donate">Donate</a></ul>
+        <ul>• <a href = "/support">Support</a></ul>
+        <ul>• YouTube - Page</ul>
+      </td>
+      <td>
+        <ul>• Stock - IP</ul>
+        <ul>• Exchange - IP</ul>
+        <ul>• Shop - IP</ul>
+      </td>
+      <td>
+        <ul>• Steal - IP</ul>
+        <ul>• Pay - IP</ul>
+        <ul>• Gift - IP</ul>
+      </td>
+    </tr>
+  </table>
+  <h4><a href = "\">Home</a></h4>
+{% endblock %}

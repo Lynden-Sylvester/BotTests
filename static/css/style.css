@@ -1,0 +1,29 @@
+
+body {
+  background-color: #73d2a0;
+  color: #000000;
+}
+
+.btn {
+  display: inline;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color: #d30f0f;
+  color: #ffffff;
+  outline: none;
+  
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.btn:hover {background-color: #757575}
+
+.btn:active {
+  background-color: #360000;
+  box-shadow: 0 5px #007e30;
+  transform: translateY(4px);
+}
+

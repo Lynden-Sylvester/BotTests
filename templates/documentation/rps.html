@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}RPS{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #000000; }
+    .automatic { color: #FFFFFF; }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>RPS</h1>
+  <p class="important">
+    • <b class = "automatic">33%</b> chance of <b class = "automatic">Winning, Losing, or Drawing</b>
+  <h4><a href = "/doc">Back to Documentation</a></h4>
+{% endblock %}

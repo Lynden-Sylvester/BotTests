@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Users{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h1>Users</h1>
+  <p>Type your Discord name in the box below and press <b>Submit</b> to link with the bot.</p>
+      <p><b>Ex.</b> ImaRealPerson#7380</p>
+      <form action = "{{ url_for('addrec') }}" method = "POST">
+         <h3>Eternal Games</h3>
+         Discord Name<br>
+         <input type = "text" name = "dn" /></br>     
+         Discord Id<br>
+         <input type = "text" name = "di" /><br>
+         <input type = "submit" value = "submit" /><br></br>
+      </form>     
+   <script src="{{ url_for('static', filename='site.js') }}"></script>
+{% endblock %}

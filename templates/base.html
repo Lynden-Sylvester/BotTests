@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    
+  <head>
+    {% block head %}
+    <meta http-equiv="refresh" content="60" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="static/Favicon_Eternal-Games.png" type="image/png" sizes="16x16">
+    <title>{% block title %}{% endblock %} - Eternal Games</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2021 by <a href="https://replit.com/@LyndenSylver">LyndenSylvester</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>
