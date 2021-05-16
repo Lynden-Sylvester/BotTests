@@ -80,6 +80,10 @@ def donate():
 @app.route('/don')
 def don():
    return render_template('documentation/don.html')
+
+@app.route('/work')
+def work():
+   return render_template('documentation/work.html')
     
 if __name__ == "__main__":
   app.run(debug=True)
