@@ -84,6 +84,11 @@ def don():
 @app.route('/work')
 def work():
    return render_template('documentation/work.html')
+
+@app.route('/vote')
+def vote():
+   return render_template('documentation/vote.html')
+
     
 if __name__ == "__main__":
   app.run(debug=True)
