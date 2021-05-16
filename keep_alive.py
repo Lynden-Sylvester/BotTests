@@ -89,6 +89,9 @@ def work():
 def vote():
    return render_template('documentation/vote.html')
 
+@app.route('/youtube')
+def youtube():
+   return render_template('documentation/youtube.html')
     
 if __name__ == "__main__":
   app.run(debug=True)
