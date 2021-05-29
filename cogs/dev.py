@@ -12,6 +12,7 @@ class Dev(commands.Cog):
         return commands.check_any(commands.is_owner(), commands.has_role(Developer))
       return commands.check(predicate)
 
+    #Unload command
     @commands.command()
     @commands.has_any_role(commands.is_owner(), "Dev")
     async def unload(self, ctx, extension):
@@ -24,6 +25,7 @@ class Dev(commands.Cog):
       await ctx.send(f"{extension} unloaded")
       await print(f"{extension} unloaded")
 
+    #load command
     @commands.command()
     @commands.has_any_role(commands.is_owner(), Developer)
     async def load(self, ctx, extension):
@@ -36,6 +38,7 @@ class Dev(commands.Cog):
       await ctx.send(f"{extension} loaded")
       await print(f"{extension} loaded")
 
+    #reload command
     @commands.command()
     @commands.has_any_role(commands.is_owner(), "Dev")
     async def reload(self, ctx, extension):
