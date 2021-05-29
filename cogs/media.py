@@ -13,7 +13,7 @@ class Media(commands.Cog):
   
   @commands.command()
   async def tiktok(self, ctx):
-    em = discord.Embed(title="Support", description='[Join Us!](https://discord.gg/FFhw4nH5TZ "Tiktok")', color = ctx.author.color)
+    em = discord.Embed(title="Support", description='[Join Us!](https://vm.tiktok.com/ZMen2xwg8/ "Tiktok")', color = ctx.author.color)
     await ctx.send(embed = em)
 
 def setup(bot):
