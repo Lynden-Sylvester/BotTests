@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from threading import Thread
 import sqlite3
-from discord.ext import tasks
 
 app = Flask(__name__)
 

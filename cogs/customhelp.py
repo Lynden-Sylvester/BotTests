@@ -28,6 +28,14 @@ class CustomHelp(commands.Cog):
         await ctx.send(embed = em)
 
     @help.command()
+    async def rps(self, ctx):
+        em = discord.Embed(title = "rps", description = "!rps is a rs a rock-paper-scissors game", color = ctx.author.color)
+
+        em.add_field(name = "!rps", value = "Chance to win, lose or draw! Use !rps <arg>. <arg> can be scissors, paper, or rock")
+
+        await ctx.send(embed = em)
+
+    @help.command()
     async def don(self, ctx):
         em = discord.Embed(title = "Don", description = "!don is an all or nothing command", color = ctx.author.color)
 

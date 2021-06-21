@@ -30,7 +30,6 @@ class Shops(commands.Cog):
         await ctx.send("\u200b")
         await ctx.send("Red")
 
-''''
     @commands.command()
     @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
     async def stock(self, ctx):
@@ -58,12 +57,11 @@ class Shops(commands.Cog):
       crsr.execute("""Select * FROM shops""")
       ans = crsr.fetchall()
       for row in ans:
-        print(f"{row[0]} {row[1]} {row[2]} {row[3]} {row[4]}")
+          print(f"{row[0]} {row[1]} {row[2]} {row[3]} {row[4]}")
       print("**************")
       mine = crsr.execute("SELECT gold, iron, coal FROM shops", (gold, iron, coal)).fetchone()
       print(str(mine[0]))
       connection.close()
-'''
 
 def setup(bot):
     bot.add_cog(Shops(bot))
