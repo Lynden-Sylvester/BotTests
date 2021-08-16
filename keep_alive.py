@@ -16,20 +16,20 @@ con.close()
 
 @app.route('/')
 def home():
-   return render_template('home.html')
+   return render_template('user.html')
 
 @app.route('/newuser')
 def new_user():
-   return render_template('user.html')
+   return render_template('home.html')
 
-@app.route('/addrec', methods = ['POST', 'GET'])
+@app.route('/addrec', methods = ['POST','GET'])
 def addrec():
-   if request.method == 'POST':
+    if request.method == 'POST':
       try:
-         dn = request.form['dn']
-         di = request.form['di']
-         
-         with sqlite3.connect("tinker.db") as con:
+        dn = request.form['dn']
+        di = request.form['di']
+
+        with sqlite3.connect("tinker.db") as con:
             cur = con.cursor()
             cur.execute("INSERT INTO users (user, user_id) VALUES (?,?)",(dn, di) )
             
@@ -42,12 +42,20 @@ def addrec():
       
       finally:
         if di == '425477636333240331':
-          return render_template("result.html", msg = msg)
           con.close()
+          return render_template("result.html", msg = msg)
+          
+        if ((not dn) or (not di)):
+          msg = "Please fill the required fields"
+
+          return render_template("user.html", msg = msg)
 
         else:
-          return render_template("thx.html", msg = msg)
           con.close()
+          return render_template("thx.html", msg = msg)
+    else:
+      return render_template("user.html")
+
 
 @app.route('/list')
 def list():

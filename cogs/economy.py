@@ -21,16 +21,16 @@ class Economy(commands.Cog):
         crsr = connection.cursor()
         #if the table is not empty update it
         try:
-            crsr.execute("""INSERT INTO tinker (user_cash, user_token) VALUES (?, ?);""", (cash_to_add, author.id))
+            crsr.execute("""INSERT INTO tinker (user_cash, user_id) VALUES (?, ?);""", (cash_to_add, author.id))
         except sqlite3.IntegrityError:
-            crsr.execute("""UPDATE tinker SET user_cash = user_cash + ? WHERE user_token = ?;""", (cash_to_add, author.id))
+            crsr.execute("""UPDATE tinker SET user_cash = user_cash + ? WHERE user_id = ?;""", (cash_to_add, author.id))
         connection.commit()
         crsr.execute("""SELECT * FROM tinker""")
         rows = crsr.fetchall()
         for row in rows:
             print(f"{row[0]} {row[1]} {row[2]}")
         print("=========================")
-        balance = crsr.execute("SELECT user_cash FROM tinker WHERE user_token = ?", (author.id,)).fetchone()
+        balance = crsr.execute("SELECT user_cash FROM tinker WHERE user_id = ?", (author.id,)).fetchone()
         connection.close()
         await ctx.send(f"Your Wallet: **$" + str(balance[0]) + "**\n")
 

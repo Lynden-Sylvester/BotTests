@@ -6,6 +6,12 @@ import sqlite3
 from datetime import timedelta
 from discord.ext import commands
 
+color_choice = ["Red", "Orange", "Yellow", "Green",
+                "Blue", "Indigo", "Violet"]
+
+rank_role = ["Unranked", "Bronze", "Silver", "Gold",
+              "Crystal", "Master", "Champion", "Titain"]
+
 class Shops(commands.Cog):
 
     def __init__(self, bot):
