@@ -21,10 +21,12 @@ class CustomHelp(commands.Cog):
         em.add_field(name = "Dailies", value = "work") #login, + more")
         em.add_field(name = "Support", value = "donate | support")
         #em.add_field(name = "Shops", value = "shop, echange, stock")
-        if dev_role in ctx.author.roles:
+        if (dev_role in ctx.author.roles) and ("user" not in ctx.message.content.lower()) :
         
           em.add_field(name = "Dev", value = "load | unload | reload")
-          em.add_field(name = "Media", value = "youtube | tiktok")
+          em.add_field(name = "In-Progress", value = "tz | shop | stock | login")
+          em.add_field(name = "Media", value = "youtube | tiktok | Twitch")
+          em.add_field(name = "Timezones", value = "tz")
         await ctx.send(embed = em)
 
     @help.command()
@@ -104,6 +106,22 @@ class CustomHelp(commands.Cog):
         em = discord.Embed(title = "Tiktok", description = "Follow us on Tiktok!", color = ctx.author.color)
 
         em.add_field(name = "~tiktok", value = "Support the server by following us on Tiktok!")
+
+        await ctx.send(embed = em)
+
+    @help.command()
+    async def twitch(self, ctx):
+        em = discord.Embed(title = "Twitch", description = "Follow us on Twitch!", color = ctx.author.color)
+
+        em.add_field(name = "~twitch", value = "Support the server by following us on Twitch!")
+
+        await ctx.send(embed = em)
+
+    @help.command()
+    async def tz(self, ctx):
+        em = discord.Embed(title = "Timezones", description = "Set your timezone to your local time!", color = ctx.author.color)
+
+        em.add_field(name = "Timezones", value = "use ~tz <arg> to select your time zone!")
 
         await ctx.send(embed = em)
 

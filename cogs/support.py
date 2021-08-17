@@ -7,11 +7,13 @@ class Support(commands.Cog):
       self.bot = bot
 
   @commands.command()
+  @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
   async def donate(self, ctx):
     em = discord.Embed(title="Patreon", description='[Donate Here!](https://www.patreon.com/lynden_sylvester "Donate")', color = ctx.author.color)
     await ctx.send(embed = em)
   
   @commands.command()
+  @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
   async def support(self, ctx):
     em = discord.Embed(title="Support", description='[Join Us!](https://discord.gg/FFhw4nH5TZ "Support Server")', color = ctx.author.color)
     await ctx.send(embed = em)

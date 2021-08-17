@@ -34,10 +34,5 @@ class Economy(commands.Cog):
         connection.close()
         await ctx.send(f"Your Wallet: **$" + str(balance[0]) + "**\n")
 
-    @commands.command()
-    async def test(self, ctx):
-      await ctx.send("Sacrifice: <:Sacrifice_Currency:836728434251268137>")
-    
-
 def setup(bot):
     bot.add_cog(Economy(bot))

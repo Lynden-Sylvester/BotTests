@@ -23,21 +23,7 @@ class Login(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def em(self, ctx, arg):
-
-      if arg.upper() in gmt:
-        for i in gmt:
-          x = gmt.index(i)
-        await ctx.send(f"Your timezone is now set to **{gmt[x]}**, also known as **{alias[x]}**")
-      else:
-        await ctx.send("invalid")
-      author = ctx.message.author
-
-      em = discord.Embed(title = "Timezones", description = "use !timezones to select your zone!", color = ctx.author.color)
-      await ctx.send(embed = em)
-
-    @commands.command()
-    @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 86400, commands.cooldowns.BucketType.user)
     async def login(self, ctx):
         #set %H:%M:%S to 00:00:00 for Live Counter
         midnight = "00:00:00"

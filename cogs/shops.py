@@ -18,8 +18,9 @@ class Shops(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
     async def shop(self, ctx):
+
         #set %H:%M:%S to 00:00:00 for Live Counter
         midnight = "00:00:00"
         #now
@@ -37,7 +38,7 @@ class Shops(commands.Cog):
         await ctx.send("Red")
 
     @commands.command()
-    @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 3600, commands.cooldowns.BucketType.user)
     async def stock(self, ctx):
       author = str(ctx.message.author)
       icon = str(ctx.author.avatar_url)

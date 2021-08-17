@@ -40,7 +40,7 @@ class Games(commands.Cog):
                            str(balance[0]) + "!**\n")
 
     @commands.command()
-    @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 60, commands.cooldowns.BucketType.user)
     async def rps(self, ctx):
 
         words = ["rock", "paper", "scissors"]

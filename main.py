@@ -64,32 +64,6 @@ async def on_guild_join(guild, ctx):
 '''
 
 @bot.event
-async def currency(self, ctx):
-  reward = random.randint(0, 100)
-
-  if reward >= 51:
-    #Common
-    await ctx.send("<:Common_Currency:836723947348557855>")
-  if reward >= 26:
-    #Uncommon
-    await ctx.send("<:Uncommon_Currency:836723947394433034>")
-  if reward >= 12:
-    #Rare
-    await ctx.send("<:Rare_Currency:836723947373723678>")
-  if reward >= 7:
-    #Epic
-    await ctx.send("<:Epic_Currency:836723947148017725>")
-  if reward >= 4:
-    #Legend
-    await ctx.send("<:Legendary_Currency:836723947130716231>")
-  if reward >= 2:
-    #Mythic
-    await ctx.send("<:Mythic_Currency:836723947268866049>")
-  if reward <= 1:
-    #Sacrifice
-    await ctx.send("<:Sacrifice_Currency:836728434251268137>")
-
-@bot.event
 #@bot.listen('on_message')
 async def on_message(msg):
   #if f"<@{bot.user.id}>" in msg.content.split():
@@ -104,17 +78,13 @@ def db_test():
 
   crsr = db.cursor()
 
-  #sql_command = ("""CREATE table IF NOT EXISTS discord_Web  as SELECT t.*, u.user from users as u INNER JOIN tinker as t ON t.user_token = u.user_id;""")
-
   crsr.execute("""SELECT t.*, u.user from users as u INNER JOIN tinker as t ON t.user_id = u.user_id;""")
-  #crsr.execute(sql_command)
   print("Joined")
 
   db.commit()
-  #crsr.execute("""SELECT * FROM discord_Web;""")
 
   rows = crsr.fetchall()
-  print("Rows:" + str(rows))
+  #print("Rows:" + str(rows))
   for row in rows:
     print(f"{row[0]} {row[1]} {row[2]} {row[3]}")
   db.close()
