@@ -25,7 +25,7 @@ class CustomHelp(commands.Cog):
         
           em.add_field(name = "Dev", value = "load | unload | reload")
           em.add_field(name = "In-Progress", value = "tz | shop | stock | login")
-          em.add_field(name = "Media", value = "youtube | tiktok | Twitch")
+          em.add_field(name = "Media", value = "youtube | tiktok | twitch")
           em.add_field(name = "Timezones", value = "tz")
         await ctx.send(embed = em)
 

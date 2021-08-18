@@ -2,7 +2,7 @@ import datetime
 import discord
 from discord.ext import commands
 #from currency import cash
-from currency import cash2
+from cogs.currency import cash2
 import time
 import sqlite3
 

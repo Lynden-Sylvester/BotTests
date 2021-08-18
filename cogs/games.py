@@ -163,36 +163,51 @@ class Games(commands.Cog):
         connection.close()
 
     @commands.command()
-    async def slots(self, ctx, arg):
+    async def Slots(self, ctx, arg):
       options = [1, 2, 3, 4, 5, 6, 7, 8]
 
-      slots = []
+      slot_machine = []
 
-      bet = arg
+      bet = int(arg)
       print(bet)
       roll = 0
       while roll < 3:
-        choose = random.randint(0, 8)
+        choose = random.randint(0, 7)
         print("choose:" + str(choose))
-        slots.append(options[choose])
+        slot_machine.append(options[choose])
         print("options[choose]: " + str(options[choose]))
-        print("slots:" + str(slots))
+        print("slots:" + str(slot_machine))
         roll += 1
-      slots = slots.strip("[],")
-      if slots[0] == slots[1] == slots[2]:
-        print("if clause")
-        await ctx.send(f"{slots} \nYou won and got {bet*2}!")
-      elif ((slots[0] == slots[1]) or (slots[1] == slots[2]) or (slots[2] == slots[0])):
-        print("elif clause")
-        await ctx.send(f"{slots} \nYou got {bet*0.5}! Better luck next time!")
+      if slot_machine[0] == slot_machine[1] == slot_machine[2]:
+        bet = bet * 2
+        slot_machine = str(slot_machine).strip("[],")
+        await ctx.send(f"{slot_machine} \nYou won and got {bet}!")
+      elif ((slot_machine[0] == slot_machine[1]) or (slot_machine[1] == slot_machine[2]) or (slot_machine[2] == slot_machine[0])):
+        bet = int(bet * 0.5)
+        slot_machine = str(slot_machine).strip("[],")
+        await ctx.send(f"{slot_machine} \nYou got {bet}! Better luck next time!")
       else:
-        print("else clause")
-        await ctx.send(f"{slots} \nYou lost {bet}! Better luck next time!")
+        slot_machine = str(slot_machine).strip("[],")
+        await ctx.send(f"{slot_machine} \nYou lost {bet}! Better luck next time!")
 
     @commands.command()
-    async def turtle(self, ctx):
-        pass
+    async def turtle(self, ctx, arg):
+      Grid = [["1", "2", "3"],
+              ["4", "5", "6"],
+              ["7", "8", "9"]]
 
+      if "HammerTime" == arg:
+        row = random.randint(0, 2)
+        col = random.randint(0, 2)
+
+        smash = Grid[row][col]
+
+        print("\n" + smash + "\n")
+        i = 0
+        while i < 3:
+          print(Grid[i])
+          i += 1
+        
 
 def setup(bot):
     bot.add_cog(Games(bot))

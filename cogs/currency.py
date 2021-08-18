@@ -2,12 +2,10 @@ import datetime
 import discord
 from discord.ext import commands
 import random
-import time
+#import time
 import sqlite3
 
-'''commands.Cog'''
-
-class cash2():
+class cash2(commands.Cog):
   ''''
   def __init__(self, bot):
       self.bot = bot
@@ -78,7 +76,5 @@ class cash2():
     print(f"You earned: {amt} {emoji}")
     return amt, emoji
       
-  ''''
-  def setup(bot):
-    bot.add_cog(cash(bot))
-  '''
+def setup(bot):
+  bot.add_cog(cash2(bot))
