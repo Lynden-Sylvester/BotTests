@@ -13,12 +13,12 @@ gmt =["GMT", "GMT+1", "GMT+2", "GMT+3",
       "GMT-8", "GMT-7", "GMT-6", "GMT-5",
       "GMT-4", "GMT-3", "GMT-2", "GMT-1"]
 
-alias =["UTC","ETC", "EET/ART", "EAT",
+alias =["UTC","ETC", "EET", "EAT",
         "NET", "PLT", "BST", "VST",
         "CTT", "JST", "AET", "SST",
         "NST", "MIT", "HST", "AST",
-        "PST", "PNT/MST", "CST", "EST/IET",
-        "PRT", "AGT/BET", "CAT"]
+        "PST", "MST", "CST", "EST",
+        "PRT", "BET", "no alias", "CAT"]
 
 class Time(commands.Cog):
 
@@ -27,7 +27,7 @@ class Time(commands.Cog):
 
     
     @commands.command()
-    @commands.cooldown(1, 86400, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 5, commands.cooldowns.BucketType.user)
     async def tz(self, ctx, arg):
       tm = datetime.datetime.utcnow()
 
@@ -40,15 +40,23 @@ class Time(commands.Cog):
 
           x = gmt.index(i)
           if (arg.upper() == gmt[x]):
-            await ctx.send(f"Your timezone is now set to **{gmt[x]}**, also known as **{alias[x]}**")
+            
             if x < 13:
               d = tm + datetime.timedelta(hours=x)
               t = d.strftime("%m/%d/%Y %H:%M:%S")
-            if x > 12:
+              await ctx.send(f"Your timezone is now set to **{gmt[x]}**, also known as **{alias[x]}**")
+              em.add_field(name = f"{gmt[x]}/{alias[x]}", value = f"{t}")
+            if (x > 12):
               dn = tm - datetime.timedelta(hours=-x)
               t = dn.strftime("%m/%d/%Y %H:%M:%S")
-            #await ctx.send(t)
-            em.add_field(name = f"{gmt[x]}/{alias[x]}", value = f"{t}")
+
+              if x == 22:
+                await ctx.send(f"Your Timezone is now set to **{gmt[x]}** which has **{alias[x]}**")
+                em.add_field(name = f"{gmt[x]}", value = f"{t}")
+              else:
+                await ctx.send(f"Your timezone is now set to **{gmt[x]}**, also known as **{alias[x]}**")
+                em.add_field(name = f"{gmt[x]}/{alias[x]}", value = f"{t}")
+            
       if arg.upper() in alias:
         for i in alias:
 
@@ -61,7 +69,6 @@ class Time(commands.Cog):
             if x > 12:
               dn = tm - datetime.timedelta(hours=-x)
               t = dn.strftime("%m/%d/%Y %H:%M:%S")
-            #await ctx.send(t)
             em.add_field(name = f"{gmt[x]}/{alias[x]}", value = f"{t}")
       
       await ctx.send(embed = em)
@@ -70,6 +77,7 @@ class Time(commands.Cog):
       #prize.randomize_prize()
       #await ctx.send(f"{prize.amt} {prize.emoji}")
       await ctx.send(f"{amt} {emoji}")
+
 
 def setup(bot):
   bot.add_cog(Time(bot))

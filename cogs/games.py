@@ -130,8 +130,9 @@ class Games(commands.Cog):
         for row in rows:
             print(f"{row[0]} {row[1]} {row[2]}")
         print("=========================")
-        bal = crsr.execute("SELECT user_cash FROM tinker WHERE user_id = ?",
-                           (author.id, )).fetchone()
+        bal = crsr.execute("SELECT user_cash FROM tinker WHERE user_id = ?",(author.id, )).fetchone()
+
+        # Add a catch to send a message if the user's balance is 0 or negative then return from the function
 
         if outcome == 0:
             values = 50

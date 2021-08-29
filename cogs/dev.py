@@ -1,6 +1,7 @@
 from discord.ext import commands
 
 Developer = 826114633106063420
+#Bot_Manager = 
 
 class Dev(commands.Cog):
 
@@ -14,7 +15,7 @@ class Dev(commands.Cog):
 
     #Unload command
     @commands.command()
-    @commands.has_any_role(commands.is_owner(), "Dev")
+    @commands.has_any_role(commands.is_owner(), "Dev", "Bot Manager")
     async def unload(self, ctx, extension):
       try:
         self.bot.unload_extension(f"cogs.{extension}")
@@ -27,7 +28,7 @@ class Dev(commands.Cog):
 
     #load command
     @commands.command()
-    @commands.has_any_role(commands.is_owner(), Developer)
+    @commands.has_any_role(commands.is_owner(), "Dev", "Bot Manager")
     async def load(self, ctx, extension):
       try:
         self.bot.load_extension(f"cogs.{extension}")
@@ -40,7 +41,7 @@ class Dev(commands.Cog):
 
     #reload command
     @commands.command()
-    @commands.has_any_role(commands.is_owner(), "Dev")
+    @commands.has_any_role(commands.is_owner(), "Dev", "Bot Manager")
     async def reload(self, ctx, extension):
       try:
         self.bot.unload_extension(f"cogs.{extension}")
