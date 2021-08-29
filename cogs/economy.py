@@ -9,7 +9,7 @@ class Economy(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.cooldown(1, 30, commands.cooldowns.BucketType.user)
+    @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
     async def work(self, ctx):
         #random number Gen
         cash_to_add = math.floor(random.random()*100)

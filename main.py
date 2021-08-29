@@ -47,19 +47,14 @@ for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         bot.load_extension(f"cogs.{filename[:-3]}")
 
-# Account for Hours
 @bot.event
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
-    hrs = error.retry_after / 3600
-    if hrs > 1:
-      hrs = hrs -1
-      mins = error.retry_after % 60
-      if mins > 1:
-        mins = mins -1
-        sec = error.retry_after % 60
-      await ctx.send(f"😡 You must wait **{hrs:.0f}:{mins:.0f}:{sec:.0f}s!**")
-
+    mins = error.retry_after / 60
+    if mins > 1:
+      mins = mins -1
+    sec = error.retry_after % 60
+    await ctx.send(f"😡 You must wait **{mins:.0f}:{sec:.0f}s!**")
 
 '''
 @bot.event
