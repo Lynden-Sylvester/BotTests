@@ -164,7 +164,16 @@ class Games(commands.Cog):
 
     @commands.command()
     async def Slots(self, ctx, arg):
-      options = [1, 2, 3, 4, 5, 6, 7, 8]
+      ''''
+      <:Sacrifice_Currency:836728434251268137> 
+      <:Mythic_Currency:836723947268866049> 
+      <:Legendary_Currency:836723947130716231> 
+      <:Epic_Currency:836723947148017725> 
+      <:Rare_Currency:836723947373723678> 
+      <:Uncommon_Currency:836723947394433034>
+      <:Common_Currency:836723947348557855>
+      '''
+      options = ["<:Common_Currency:836723947348557855>", 2, 3, 4, 5, 6, 7, 8]
 
       slot_machine = []
 

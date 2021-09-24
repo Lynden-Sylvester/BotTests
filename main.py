@@ -69,7 +69,7 @@ async def on_message(msg):
   #if f"<@{bot.user.id}>" in msg.content.split():
   #if msg.content.startswith(f"<@{bot.user.id}>"):
   if bot.user.mentioned_in(msg):
-    await msg.channel.send("Use `~work` to get your first money, then try out other commands!")
+    await msg.channel.send("Use ``~work`` to get your first money, set your timezone with `~tz gmt[+/-offset]`\n ```Ex. \n ~tz gmt-5```\n, then try out other commands!")
   await bot.process_commands(msg)
 
 
