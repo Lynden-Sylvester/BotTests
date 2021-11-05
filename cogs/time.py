@@ -83,5 +83,7 @@ class Time(commands.Cog):
       #await ctx.send(f"{prize.amt} {prize.emoji}")
       await ctx.send(f"{amt} {emoji}")
 
+      
+
 def setup(bot):
   bot.add_cog(Time(bot))

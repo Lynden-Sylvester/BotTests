@@ -21,13 +21,8 @@ user_cash INTEGER,
 user_id INTEGER UNIQUE);"""
 crsr.execute(sql_command)
 
-kol = crsr.fetchall()
-print(kol, "kol")
-print("**************")
-
 db.commit()
 db.close()
-
 
 db = sqlite3.connect("tinker.db")
 
@@ -51,10 +46,18 @@ for filename in os.listdir("./cogs"):
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
     mins = error.retry_after / 60
+    hrs = mins % 24
+    hrs = hrs - 1
+    mins = mins % 60
     if mins > 1:
       mins = mins -1
     sec = error.retry_after % 60
-    await ctx.send(f"😡 You must wait **{mins:.0f}:{sec:.0f}s!**")
+    if error.retry_after > 3600:
+      await ctx.send(f"😡 You must wait **{hrs:.0f}:{mins:.0f}:{sec:.0f}s!**")
+    elif error.retry_after > 60:
+      await ctx.send(f"😡 You must wait **{mins:.0f}:{sec:.0f}s!**")
+    else:
+      await ctx.send(f"😡 You must wait **{sec:.0f}s!**")
 
 '''
 @bot.event
@@ -68,8 +71,10 @@ async def on_guild_join(guild, ctx):
 async def on_message(msg):
   #if f"<@{bot.user.id}>" in msg.content.split():
   #if msg.content.startswith(f"<@{bot.user.id}>"):
+
+  #set your timezone with `~tz gmt[+/-offset]`,
   if bot.user.mentioned_in(msg):
-    await msg.channel.send("Use ``~work`` to get your first money, set your timezone with `~tz gmt[+/-offset]`\n ```Ex. \n ~tz gmt-5```\n, then try out other commands!")
+    await msg.channel.send("Use ``~work`` to get your first money,  then try out other commands!")
   await bot.process_commands(msg)
 
 

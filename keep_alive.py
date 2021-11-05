@@ -22,6 +22,10 @@ def home():
 def new_user():
    return render_template('home.html')
 
+@app.route('/stats')
+def stats():
+  return render_template('stats.html')
+
 @app.route('/addrec', methods = ['POST','GET'])
 def addrec():
     if request.method == 'POST':

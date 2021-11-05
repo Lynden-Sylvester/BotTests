@@ -29,15 +29,15 @@ class Login(commands.Cog):
         midnight = "00:00:00"
         #now
         currentTime = datetime.datetime.now()
-        timedelta(days=0, hours=0, minutes=0)
         #tmr
-        nextDay = currentTime + timedelta(days=0)
+        nextDay = currentTime + timedelta(days=1)
         nextDay = nextDay.strptime(nextDay.strftime("%Y/%m/%d ") + midnight, "%Y/%m/%d %H:%M:%S")
         print(nextDay)
         currentTime = currentTime.strptime(currentTime.strftime("%Y-%m-%d %H:%M:%S"), "%Y-%m-%d %H:%M:%S")
         print(currentTime)
         #Live Counter
-        diff = currentTime - nextDay
+        diff = nextDay - currentTime
+
         await ctx.send(diff)
         #embed here
         await ctx.send("\u200b")
