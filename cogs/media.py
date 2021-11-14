@@ -1,6 +1,11 @@
 import discord
 from discord.ext import commands
 
+# Tinker Discord Server ID: 557658329598525441
+
+# Rhinze0r Discord Server ID: 886795021536354325 
+
+
 class Media(commands.Cog):
 
   def __init__(self, bot):

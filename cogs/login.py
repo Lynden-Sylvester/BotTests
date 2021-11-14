@@ -28,6 +28,15 @@ class Login(commands.Cog):
         #set %H:%M:%S to 00:00:00 for Live Counter
         midnight = "00:00:00"
         #now
+
+        ''''
+        Change CurrentTime to Database retrevial of User Specific Timezone.
+        '''
+        ''''
+        Open Database, create column for Login and update by one for every consecutive login. 24hr cooldown, if not run within 48hrs by the user, reset count down to 0. If count would go over 7, overwrite to 1.
+        '''
+
+
         currentTime = datetime.datetime.now()
         #tmr
         nextDay = currentTime + timedelta(days=1)
