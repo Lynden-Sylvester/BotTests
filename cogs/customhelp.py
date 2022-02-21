@@ -20,13 +20,15 @@ class CustomHelp(commands.Cog):
         em.add_field(name = "Games", value = "don | rps") #, turtle, + more")
         em.add_field(name = "Dailies", value = "work") #login, + more")
         em.add_field(name = "Support", value = "donate | support")
+
+        em.add_field(name = "QOL", value = "bal")
         #em.add_field(name = "Shops", value = "shop, echange, stock")
         if (dev_role in ctx.author.roles) and ("user" not in ctx.message.content.lower()) :
         
           em.add_field(name = "Dev", value = "load | unload | reload")
           em.add_field(name = "In-Progress", value = "tz | shop | stock | login")
           em.add_field(name = "Media", value = "youtube | tiktok | twitch")
-          em.add_field(name = "Timezones", value = "tz")
+          em.add_field(name = "Timezones", value = "tz gmt<+/-><1-12>")
         await ctx.send(embed = em)
 
     @help.command()
@@ -39,9 +41,17 @@ class CustomHelp(commands.Cog):
 
     @help.command()
     async def don(self, ctx):
-        em = discord.Embed(title = "Don", description = "~don is an all or nothing command", color = ctx.author.color)
+        em = discord.Embed(title = "don", description = "~don is an all or nothing command", color = ctx.author.color)
 
         em.add_field(name = "~don", value = "Chance of x2 cash or x0!")
+
+        await ctx.send(embed = em)
+    
+    @help.command()
+    async def bal(self, ctx):
+        em = discord.Embed(title = "bal", description = "~bal is a Quality Of Life (QOL) command", color = ctx.author.color)
+
+        em.add_field(name = "~bal", value = "CDisplays your current balance!")
 
         await ctx.send(embed = em)
 

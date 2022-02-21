@@ -28,7 +28,6 @@ db = sqlite3.connect("tinker.db")
 
 crsr = db.cursor()
 
-#sql_command = """SELECT * from users u INNER JOIN tinker t ON u.user_id = t.user_token;"""
 crsr.execute(sql_command)
 
 db.commit()
@@ -36,7 +35,6 @@ rows = crsr.fetchall()
 for row in rows:
   print(f"Rows: {row[0]} {row[1]} {row[2]} {row[3]} {row[4]} {row[5]} {row[6]}")
 db.close()
-
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
@@ -68,15 +66,17 @@ async def on_guild_join(guild, ctx):
 
 @bot.event
 #@bot.listen('on_message')
-async def on_message(msg):
-  #if f"<@{bot.user.id}>" in msg.content.split():
-  #if msg.content.startswith(f"<@{bot.user.id}>"):
-
-  #set your timezone with `~tz gmt[+/-offset]`,
-  if bot.user.mentioned_in(msg):
-    await msg.channel.send("Use ``~work`` to get your first money,  then try out other commands!")
-  await bot.process_commands(msg)
-
+async def on_message(ctx):
+  '''try:
+    if ctx.message.raw_role_mentions or '@everyone' in ctx.message.content or '@here' in ctx.message.content:
+      print("nope")
+  except AttributeError:
+    pass
+  else:'''
+    #set your timezone with `~tz gmt[+/-offset]`,
+  if bot.user.mentioned_in(ctx):
+      await ctx.channel.send("Use ``~work`` to get your first money,then try out other commands!")
+  await bot.process_commands(ctx)
 
 def db_test():
   db = sqlite3.connect("tinker.db")
@@ -89,7 +89,6 @@ def db_test():
   db.commit()
 
   rows = crsr.fetchall()
-  #print("Rows:" + str(rows))
   for row in rows:
     print(f"{row[0]} {row[1]} {row[2]} {row[3]}")
   db.close()
@@ -97,4 +96,7 @@ def db_test():
 db_test()
 keep_alive()
 token = os.environ.get("DISCORD_BOT_SECRET")
-bot.run(token)
+try:
+  bot.run(token)
+except:
+  os.system("kill 1")

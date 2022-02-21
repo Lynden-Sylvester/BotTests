@@ -189,14 +189,14 @@ class Games(commands.Cog):
         roll += 1
       if slot_machine[0] == slot_machine[1] == slot_machine[2]:
         bet = bet * 2
-        slot_machine = str(slot_machine).strip("[],")
+        slot_machine = str(slot_machine).strip("[],`")
         await ctx.send(f"{slot_machine} \nYou won and got {bet}!")
       elif ((slot_machine[0] == slot_machine[1]) or (slot_machine[1] == slot_machine[2]) or (slot_machine[2] == slot_machine[0])):
         bet = int(bet * 0.5)
-        slot_machine = str(slot_machine).strip("[],")
+        slot_machine = str(slot_machine).strip("[],`")
         await ctx.send(f"{slot_machine} \nYou got {bet}! Better luck next time!")
       else:
-        slot_machine = str(slot_machine).strip("[],")
+        slot_machine = str(slot_machine).strip("[],`")
         await ctx.send(f"{slot_machine} \nYou lost {bet}! Better luck next time!")
 
     @commands.command()

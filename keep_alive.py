@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, abort
 from threading import Thread
 import sqlite3
+import sys
 
 app = Flask(__name__)
 
@@ -17,6 +18,16 @@ con.close()
 @app.route('/')
 def home():
    return render_template('user.html')
+
+@app.route('/webhook', methods = ['POST'])
+def webhook():
+  print("Recieved Webhook")
+  sys.stdout.flush()
+  if request.method == 'POST':
+    print(request.json)
+    return 'Success', 200
+  else:
+    abort(400)
 
 @app.route('/newuser')
 def new_user():
