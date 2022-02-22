@@ -83,13 +83,11 @@ class Economy(commands.Cog):
       cash_difference = int(listOfPay[1])
 
       # Update the author's balance
-
-      #connection = sqlite3.connect('tinker.db')
-
       crsr2 = connection.cursor()
-
-      
+      print("Before cursor 2 first Select")
+      author_balance = crsr2.execute("""SELECT user_cash FROM tinker WHERE user_id = ?;""", (author.id,))
       print("Past cursor 2 start")
+      print(author_balance)
       #if (cash_difference != 50):
       crsr2.execute("""UPDATE tinker SET user_cash = user_cash - ? WHERE user_id = ?;""",
                             (cash_difference, author.id))
@@ -109,7 +107,6 @@ class Economy(commands.Cog):
       connection.commit()
 
       # get user bal from the database
-      
       author_balance = crsr.execute("""SELECT user_cash FROM tinker WHERE user_id = ?""", (author.id,)).fetchone()
       
       print(f"author balance: " + str(author_balance))
@@ -118,20 +115,20 @@ class Economy(commands.Cog):
       
       print(author)
       #Ignored
-      ''''
+      
       print(author_balance)
-      '''
+      
       #Printed
       print("After Author Update")
 
-      ''''
-      print("Author balance: " + str(author_balance))
-      '''
       
-      ''''
+      print("Author balance: " + str(author_balance))
+      
+      
+      
       author_balance = crsr.execute("""SELECT user_cash FROM tinker WHERE user_id = ?;""", (author.id,)).fetchone()
       print(f" new author balance: " + str(author_balance))
-      '''
+      
 
       # Update the recipient's balance
       
@@ -141,16 +138,16 @@ class Economy(commands.Cog):
       
       connection.commit()
 
-      ''''
+      
       print(recipient_balance)
-      '''
+      
       connection.close()
 
       print(f"Your balance is now: **${author_balance[0]}**\n You paid **{recipient}** **${cash_difference}**\n **{recipient}'s** balance is now: **{recipient_balance[0]}**")
 
-      ''''
+      
       await ctx.send(f"Your balance is now: **${author_balance[0]}**\n You paid **{recipient}** **${cash_difference}**\n **{recipient}'s** balance is now: **{recipient_balance[0]}**")
-      '''
+      
       
 def setup(bot):
     bot.add_cog(Economy(bot))
