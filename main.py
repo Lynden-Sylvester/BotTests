@@ -78,6 +78,8 @@ async def on_message(ctx):
       await ctx.channel.send("Use ``~work`` to get your first money,then try out other commands!")
   await bot.process_commands(ctx)
 
+
+
 def db_test():
   db = sqlite3.connect("tinker.db")
 

@@ -1,0 +1,52 @@
+#Lines 103-163
+
+crsr2.execute(
+            """UPDATE tinker SET user_cash = user_cash - ? WHERE user_id = ?;""",
+            (cash_difference, author.id))
+        
+      
+        crsr2.execute("""SELECT * FROM tinker""")
+       
+        #author_balance = crsr2.execute("""SELECT * FROM tinker""")
+        rows2 = crsr2.fetchall()
+      
+        print("=========================")
+        for row2 in rows2:
+            print(f"{row2[0]} {row2[1]} {row2[2]}")
+        print("=========================")
+
+        connection.commit()
+
+        # get user bal from the database
+        author_balance = crsr.execute(
+            """SELECT user_cash FROM tinker WHERE user_id = ?""",
+            (author.id, )).fetchone()
+
+        author_balance = crsr.execute(
+            """SELECT user_cash FROM tinker WHERE user_id = ?;""",
+            (author.id, )).fetchone()
+        print(f" new author balance: " + str(author_balance))
+
+        # Update the recipient's balance
+
+        recipient_balance = crsr.execute(
+            """SELECT user_cash FROM tinker WHERE user_id = ?;""",
+            (recipient, )).fetchone()
+
+        recipient_balance = crsr.execute(
+            """UPDATE user_cash FROM tinker SET user_cash = user_cash + ? WHERE user_id = ?;""",
+            (cash_difference, recipient)).fetchone()
+
+        connection.commit()
+
+        print(recipient_balance)
+
+        connection.close()
+
+        print(
+            f"Your balance is now: **${author_balance[0]}**\n You paid **{recipient}** **${cash_difference}**\n **{recipient}'s** balance is now: **{recipient_balance[0]}**"
+        )
+
+        await ctx.send(
+            f"Your balance is now: **${author_balance[0]}**\n You paid **{recipient}** **${cash_difference}**\n **{recipient}'s** balance is now: **{recipient_balance[0]}**"
+        )

@@ -1,0 +1,28 @@
+Can someone take a look at my pastebin and tell me why the `user_cash` for the recipient's change in balance on line 70 is not reflected in line 81? What did I miss/not do right?
+
+pastebin: https://pastebin.com/XJKv8sn2
+
+This is my output:
+
+```py
+- Starting Balances
+=========================
+1 59 425477636333240331
+2 4 805142012331687937
+=========================
+Before DB Update
+~pay
+50
+<@!805142012331687937>
+- Author Balance Change
+=========================
+1 9 425477636333240331
+2 4 805142012331687937
+=========================
+ new author balance: 9
+- Recipient Balance Change?
+=========================
+1 9 425477636333240331
+2 4 805142012331687937
+=========================
+```
