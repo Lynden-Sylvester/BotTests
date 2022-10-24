@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
-from cogs.settings import Settings, Developer
+from cogs.settings import Settings
+import os
 
 vip = Settings.admin
 Settings.admin == False
@@ -10,12 +11,16 @@ class CustomHelp(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
+    # Generalize Embed into a functin
+    # Append Dev Cogs to Embed
     @commands.group(invoke_without_command=True)
     async def help(self, ctx):
         author = ctx.message.author
         author_roles = ctx.author.roles
-        dev_role = ctx.guild.get_role(Developer)
+        dev_role = ctx.guild.get_role(os.getenv('Developer'))
 
+        # Developer Help Embed
         if (dev_role in author_roles):
 
             emDev = discord.Embed(
@@ -39,10 +44,9 @@ class CustomHelp(commands.Cog):
             emDev.add_field(name="Timezones", value="tz gmt<+/-><1-12>")
 
             await ctx.send(embed=emDev)
+
+        # User Help Embed
         else:
-            #print(dev_role)
-            #print(Developer)
-            #print(author_roles)
 
             em = discord.Embed(
                 title="Help",
@@ -61,13 +65,12 @@ class CustomHelp(commands.Cog):
     async def rps(self, ctx):
         em = discord.Embed(
             title="rps",
-            description="~rps is a rs a rock-paper-scissors game",
+            description="~rps is a rock-paper-scissors game",
             color=ctx.author.color)
 
         em.add_field(
             name="~rps",
-            value=
-            "Chance to win, lose or draw! Use ~rps <arg>. <arg> can be scissors, paper, or rock"
+            value="Chance to win, lose or draw! Use ~rps <arg>. <arg> can be scissors, paper, or rock"
         )
 
         await ctx.send(embed=em)

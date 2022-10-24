@@ -6,6 +6,7 @@ class Support(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Embed Link to Patreon
     @commands.command()
     @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
     async def donate(self, ctx):
@@ -16,6 +17,7 @@ class Support(commands.Cog):
             color=ctx.author.color)
         await ctx.send(embed=em)
 
+    # Embed Link to Discord Support Server
     @commands.command()
     @commands.cooldown(1, 300, commands.cooldowns.BucketType.user)
     async def support(self, ctx):
@@ -25,27 +27,6 @@ class Support(commands.Cog):
             '[Join Us!](https://discord.gg/FFhw4nH5TZ "Support Server")',
             color=ctx.author.color)
         await ctx.send(embed=em)
-
-    '''''
-  @commands.command()
-  async def fb(self, ctx, arg):
-
-    author = ctx.message.author
-
-    arg = ctx.content.message.lower()
-    
-    f = open("cogs/feedback.txt", "w")
-    print("After open")
-    f.write("Hello")
-    #f.write(f"**{author}:** \n{msg}")
-    f.close()
-    #print(f.write(f"**{author}:** \n{msg}"))
-    print("Testing")
-    
-    f = open("cogs/feedback.txt")
-    print(f.read())
-  '''
-
 
 def setup(bot):
     bot.add_cog(Support(bot))

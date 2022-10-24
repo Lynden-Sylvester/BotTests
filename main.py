@@ -3,7 +3,6 @@ import os
 from discord.ext import commands
 import sqlite3
 from keep_alive import keep_alive
-import random
 
 intents = discord.Intents.default()
 intents.members = True

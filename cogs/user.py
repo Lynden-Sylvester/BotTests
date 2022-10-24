@@ -1,7 +1,4 @@
 from discord.ext import commands
-import math
-import sqlite3
-import random
 import os
 
 
@@ -14,19 +11,19 @@ class Games(commands.Cog):
     async def fb(self, ctx):
 
         msg = ctx.message.content.lower()
-
-        #Retrieve discord author message
         author = ctx.message.author
-        print(msg)
+
+      # Read user msg
+      # Translate it into a bash echo command
+      # Echo msg directly to feedback.md
         if "~fb" in msg:
-            print(msg)
             os.system(f"echo **Author:** {author} >> ~/BotTests/feedback.md")
-          
+
             os.system(
                 f"echo **Feedback:** {msg[4:]} >> ~/BotTests/feedback.md")
-          
-            os.system(
-                f"echo "" >> ~/BotTests/feedback.md")
+
+            os.system(f"echo " " >> ~/BotTests/feedback.md")
+
 
 def setup(bot):
     bot.add_cog(Games(bot))

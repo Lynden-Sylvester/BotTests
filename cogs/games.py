@@ -192,9 +192,7 @@ class Games(commands.Cog):
             )
             await ctx.send(f"You won **${bet}**!")
 
-        elif (Machine[0] == Machine[1]) or (Machine[1]
-                                            == Machine[2]) or (Machine[2]
-                                                               == Machine[0]):
+        elif (Machine[0] == Machine[1]) or (Machine[1] == Machine[2]) or (Machine[2] == Machine[0]):
             bet = int(bet * 1.5)
             await ctx.send(
                 f"{options[Machine[0]]}{options[Machine[1]]}{options[Machine[2]]}"

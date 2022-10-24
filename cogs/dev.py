@@ -1,7 +1,7 @@
 from discord.ext import commands
+import os
 
-Developer = 980993372074410014
-
+Developer = os.getenv('Developer')
 
 class Dev(commands.Cog):
     def __init__(self, bot):
